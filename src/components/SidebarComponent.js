@@ -1,33 +1,16 @@
 // src/components/SidebarComponent.js
-import React, { useState, useEffect } from 'react';
-import '../css/Sidebar.css'; 
-import { FaClock, FaAdjust, FaMusic, FaLink } from 'react-icons/fa'; // Import required icons
+import React, { useState } from 'react';
+import '../css/Sidebar.css';
+import { FaClock, FaAdjust, FaMusic, FaLink, FaFacebook, FaInstagram } from 'react-icons/fa'; // Import required icons
 import { FaExpand, FaCompress } from 'react-icons/fa';
+import myPortfolioLogo from '../my-portfolio-logo.svg';
+import useAutoHide from '../hooks/useAutoHide';
 
-const SidebarComponent = ({ toggleTimeFormat, toggleTheme }) => {
-  const [isSidebarVisible, setSidebarVisibility] = useState(true);
 
-  useEffect(() => {
-    let timeoutId;
+const SidebarComponent = ({ toggleTimeFormat, toggleTheme, toggleMusicPlayer }) => {
+  const isSidebarVisible = useAutoHide();
 
-    const handleMouseMovement = () => {
-      setSidebarVisibility(true);
-
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => {
-        setSidebarVisibility(false);
-      }, 5000);
-    };
-
-    document.addEventListener('mousemove', handleMouseMovement);
-
-    return () => {
-      document.removeEventListener('mousemove', handleMouseMovement);
-    };
-  }, []);
-
-//  -----------
-const [isFullscreen, setFullscreen] = useState(false);
+  const [isFullscreen, setFullscreen] = useState(false);
 
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
@@ -38,21 +21,23 @@ const [isFullscreen, setFullscreen] = useState(false);
 
     setFullscreen(!isFullscreen);
   };
-  // ---------
-
-
-
-  const toggleMusicScreen = () => {
-    // Add logic for toggling music screen
-  };
 
   const adjustTimeCardSize = () => {
     // Add logic for adjusting time card size
   };
 
   const handleSocialMediaClick = (socialMedia) => {
-    // Add logic for handling social media button clicks
-    console.log(`Clicked on ${socialMedia}`);
+    const socialMediaLinks = {
+      Facebook: 'https://www.facebook.com/mire.patel',
+      Instagram: 'https://www.instagram.com/_mire_patel_/',
+      Portfolio: 'https://mirepatel-portfolio.netlify.app/',
+    };
+
+    const link = socialMediaLinks[socialMedia];
+
+    if (link) {
+      window.open(link, '_blank');
+    }
   };
 
   return (
@@ -64,13 +49,20 @@ const [isFullscreen, setFullscreen] = useState(false);
         <FaClock />
       </button>
       <button onClick={toggleTheme}><FaAdjust /></button>
-      <button onClick={toggleMusicScreen}><FaMusic /></button>
+      <button onClick={toggleMusicPlayer}><FaMusic /></button>
       <button onClick={adjustTimeCardSize}><FaLink /></button>
 
       <div className="social-media-buttons">
-        <button onClick={() => handleSocialMediaClick('Facebook')}>Facebook</button>
-        <button onClick={() => handleSocialMediaClick('Twitter')}>Twitter</button>
-        <button onClick={() => handleSocialMediaClick('Instagram')}>Instagram</button>
+        <button onClick={() => handleSocialMediaClick('Facebook')}>
+          <FaFacebook />
+        </button>
+        <button onClick={() => handleSocialMediaClick('Instagram')}>
+          <FaInstagram />
+        </button>
+        <button onClick={() => handleSocialMediaClick('Portfolio')}>
+        <img src={myPortfolioLogo} alt="Portfolio" style={{ width: '20px', height: '20px' }}/>
+          {/* <FaExternalLinkAlt className="external-link-icon" /> */}
+        </button>
       </div>
     </div>
   );
