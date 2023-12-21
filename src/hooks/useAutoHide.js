@@ -1,7 +1,7 @@
 // src/hooks/useAutoHide.js
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-const useAutoHide = () => {
+const useAutoHide = (timeoutDuration = 5000) => {
   const [isVisible, setVisibility] = useState(true);
   let timeoutId;
 
@@ -10,7 +10,7 @@ const useAutoHide = () => {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => {
       setVisibility(false);
-    }, 5000);
+    }, timeoutDuration);
   };
 
   useEffect(() => {
@@ -18,9 +18,10 @@ const useAutoHide = () => {
 
     return () => {
       document.removeEventListener('mousemove', handleMouseMovement);
+      clearTimeout(timeoutId);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [timeoutId, timeoutDuration]);
 
   return isVisible;
 };

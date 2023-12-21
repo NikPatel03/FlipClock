@@ -5,7 +5,7 @@ import useAutoHide from '../hooks/useAutoHide';
 import '../css/MusicPlayer.css';
 
 const MusicPlayerComponent = ({ onClose }) => {
-    const isVisible = useAutoHide();
+    const isVisible = useAutoHide(10000);
 
     const handleMinimize = () => {
         // Toggle visibility without changing the minimized state
