@@ -1,38 +1,44 @@
-.App {
-  text-align: center;
+body.light-theme {
+    transition: color 0.5s, text-shadow 0.5s, box-shadow 0.5s, background 0.5s;
+    background: hsl(0, 0%, 90%);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body.light-theme .flip-clock .flip-clock-group .flip-clock-label.flip-clock-meridium {
+    color: hsl(0, 0%, 40%);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body.light-theme .flip-clock .flip-clock-group .flip-clock-list {
+    color: hsl(0, 0%, 20%);
+    text-shadow: 0 1px 2px #000;
+    box-shadow: 0 2px 5px hsla(0, 0%, 0%, 0.7);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+body.light-theme .flip-clock .flip-clock-group .flip-clock-list .before .top:after {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, hsla(0, 0%, 0%, 0.7) 100%);
 }
 
-.App-link {
-  color: #61dafb;
+body.light-theme .flip-clock .flip-clock-group .flip-clock-list .before .bottom:after {
+    background: linear-gradient(to bottom, hsla(0, 0%, 0%, 0.7) 0%, rgba(0, 0, 0, 0.1) 100%);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+body.light-theme .flip-clock .flip-clock-group .flip-clock-list .flip-clock-list-item-inner>.top,
+body.light-theme .flip-clock .flip-clock-group .flip-clock-list .flip-clock-list-item-inner>.bottom {
+    background: hsl(0, 0%, 85%);
+}
+
+body.light-theme .flip-clock .flip-clock-group .flip-clock-list .flip-clock-list-item-inner .top:before {
+    background: rgb(0, 0, 0);
+    opacity: 0.4;
+}
+
+body.light-theme .flip-clock .flip-clock-group .flip-clock-list .flip-clock-list-item-inner .bottom:before {
+    background: hsl(0, 0%, 75%);
+    opacity: 0.4;
+}
+
+body.light-theme .flip-clock .flip-clock-divider:before,
+body.light-theme .flip-clock .flip-clock-divider:after {
+    background: hsl(0, 0%, 40%);
+    box-shadow: 0 0 3px 0.5px hsla(0, 0%, 0%, 0.5);
 }

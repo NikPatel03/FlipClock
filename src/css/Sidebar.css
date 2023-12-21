@@ -1,0 +1,29 @@
+/* src/components/SidebarComponent.css */
+.sidebar {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: opacity 0.3s;
+}
+
+.sidebar.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.social-media-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.sidebar button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
