@@ -1,14 +1,16 @@
 import React, { useEffect, useRef } from 'react';
 import FlipClock from 'flipclock';
-import '../css/FlipClock.css'; 
+import '../css/FlipClock.css';
 
-const FlipClockComponent = ({ isTwentyFourHourFormat }) => {
+const FlipClockComponent = ({ isTwentyFourHourFormat, size }) => {
   const clockElementRef = useRef(null);
 
   useEffect(() => {
     const clockElement = clockElementRef.current;
 
     if (!clockElement) return;
+
+    clockElement.style.transform = `scale(${size / 70})`;
 
     // Clear the existing content before initializing a new FlipClock
     clockElement.innerHTML = '';
@@ -22,7 +24,7 @@ const FlipClockComponent = ({ isTwentyFourHourFormat }) => {
     });
 
     return () => clock.stop();
-  }, [clockElementRef, isTwentyFourHourFormat]);
+  }, [clockElementRef, isTwentyFourHourFormat, size]);
 
   return <div className="clock" ref={clockElementRef}></div>;
 };

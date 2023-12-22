@@ -1,7 +1,10 @@
 .flip-clock {
     font-family: "Helvetica Neue", Helvetica, sans-serif;
     font-size: 16px;
+    user-select: none;
+    /* Standard property */
     -webkit-user-select: none;
+    /* Webkit/Blink browsers */
     text-align: center;
     position: relative;
     width: 100%;
@@ -13,8 +16,10 @@
 }
 
 .flip-clock .flip-clock-group {
-    display: flex;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .flip-clock .flip-clock-group .flip-clock-label {
@@ -31,15 +36,18 @@
 }
 
 .flip-clock .flip-clock-group .flip-clock-label.flip-clock-meridium {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1rem;
     font-size: 1.75em;
     line-height: 1.75em;
-    top: 50%;
-    left: 100%;
     flex: 0;
     width: auto;
     text-transform: uppercase;
     font-weight: 900;
-    transform: translate(0.5em, -45%);
+    transform: translate(0, -1%);
     color: hsl(0, 0%, 50%);
     text-shadow: 0 1px 2px #000;
 }

@@ -1,3 +1,11 @@
+.App {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+}
+
 body.light-theme {
     transition: color 0.5s, text-shadow 0.5s, box-shadow 0.5s, background 0.5s;
     background: hsl(0, 0%, 90%);
@@ -43,23 +51,31 @@ body.light-theme .flip-clock .flip-clock-divider:after {
     box-shadow: 0 0 3px 0.5px hsla(0, 0%, 0%, 0.5);
 }
 
-body.light-theme .sidebar {
-    background: hsl(0, 0%, 85%);
-    text-shadow: 0 1px 2px #000;
-    box-shadow: 0 2px 5px hsla(0, 0%, 0%, 0.7);
+
+.tooltip-btn {
+    position: relative;
+    cursor: pointer;
 }
 
-body.light-theme .sidebar button {
-    color: hsl(0, 0%, 20%);
+.tooltip-btn:hover::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(30%);
+    padding: 0.5em 0.6em;
+    background-color: hsl(0, 0%, 80%);
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    font-size: 0.5em;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0.9;
+    visibility: visible;
+    z-index: 999;
 }
 
-/* src/css/MusicPlayer.css */
-body.light-theme .music-player-window {
-    background: hsl(0, 0%, 85%);
-    text-shadow: 0 1px 2px #000;
-    box-shadow: 0 2px 5px hsla(0, 0%, 0%, 0.7);
-}
-
-body.light-theme .music-player-window .player-controls button {
-    color: hsl(0, 0%, 20%);
+body.light-theme .tooltip-btn:hover::before {
+    background-color: #333;
+    color: #fff;
 }

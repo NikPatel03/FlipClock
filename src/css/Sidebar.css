@@ -4,12 +4,12 @@
   bottom: 30px;
   z-index: 20;
   background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 50px;
-  padding: 10px 30px;
+  border-radius: 30px;
+  padding: 20px 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 40px;
   transition: opacity 0.3s;
   background: hsl(0, 0%, 20%);
   text-shadow: 0 1px 2px #000;
@@ -23,16 +23,37 @@
 
 .social-media-buttons {
   display: flex;
-  gap: 30px;
+  gap: 40px;
 }
 
 .sidebar button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   background: none;
   border: none;
   width: 30px;
   height: 30px;
-  font-size: 20px;
+  font-size: 25px;
   color: hsl(0, 0%, 80%);
+  transition: all 0.3s ease;
 }
 
+.sidebar button:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+/* ----------- */
+/* Light theme */
+
+body.light-theme .sidebar {
+  background: hsl(0, 0%, 85%);
+  text-shadow: 0 1px 2px #000;
+  box-shadow: 0 2px 5px hsla(0, 0%, 0%, 0.7);
+}
+
+body.light-theme .sidebar button {
+  color: hsl(0, 0%, 20%);
+}
